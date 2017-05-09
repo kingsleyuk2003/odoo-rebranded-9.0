@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+<openerp>
+    <data>
+
+        <record id="confirm_stock_picking_returned_view" model="ir.ui.view">
+            <field name="name">Stock Items Returned from Dispatcher</field>
+            <field name="model">stock.picking.return.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Stock Items Returned">
+                    <p>You are about to physically accept returned items from the dispatcher. </p>
+                    <p>NOTE: The returned items does not update the stock quantity in the system. To update the system stcok level, you must use the "Reverse" button to generate a receipt picking document for the returned items. On validation of the new picking document, the system stock quantity  will be updated</p>
+                    <group>
+                        <field name="msg"/>
+                    </group>
+                    <footer>
+                        <button name="action_wizard_return_notice" string="Accept Returned Items without updating the stock level" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_stock_picking_return_items" model="ir.actions.act_window">
+            <field name="name">Stock Items Returned from Dispatcher</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">stock.picking.return.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <!--<field name="groups_id" eval="[(4,ref('kin_sales_double_validation.group_show_disapprove_btn'))]"/>-->
+        </record>
+
+
+
+
+    </data>
+</openerp>
